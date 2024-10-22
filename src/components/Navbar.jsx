@@ -7,12 +7,13 @@ import {
   UserIcon,
   ChatAltIcon,
 } from "@heroicons/react/outline";
+import Logo from "../assets/logo.svg";
 
 const Navbar = () => {
   const location = useLocation();
 
   const items = [
-    { name: "Home", link: "/", icon: <HomeIcon className="h-6 w-6" /> },
+    { name: "Home", link: "/home", icon: <HomeIcon className="h-6 w-6" /> },
     {
       name: "Alumnos",
       link: "/alumnos",
@@ -29,12 +30,10 @@ const Navbar = () => {
   const isActive = (path) => location.pathname === path;
 
   return (
-    <nav className="bg-white h-screen w-64 flex flex-col justify-between p-6 fixed top-0 left-0 border-r border-gray-200">
+    <nav className="bg-white h-screen w-64 flex flex-col justify-between fixed p-6 top-0 left-0 border-r border-gray-200">
       {/* Logo y Título */}
       <div className="flex flex-col items-center mb-12">
-        <img src="/path-to-your-logo.png" alt="Logo" className="h-16 mb-2" />
-        <h1 className="text-xl font-bold">LEARNING</h1>
-        <p className="text-sm text-gray-500">Path</p>
+        <img src={Logo} alt="Logo" className="h-24 mb-2" />
       </div>
 
       {/* Links */}
