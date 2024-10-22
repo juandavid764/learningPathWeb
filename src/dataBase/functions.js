@@ -37,56 +37,9 @@ export async function getStudentById(student) {
   return data;
 }
 
-// Update a student by ID
-export async function updateStudent(id, updatedStudent) {
-  const { data, error } = await supabase
-    .from("Estudiante")
-    .update(updatedStudent)
-    .eq("id", id);
-
-  if (error) {
-    console.error("Error updating student:", error);
-    return null;
-  }
-
-  return data;
-}
-
-// Delete a student by ID
-export async function deleteStudent(id) {
-  const { data, error } = await supabase
-    .from("Estudiante")
-    .delete()
-    .eq("id", id);
-
-  if (error) {
-    console.error("Error deleting student:", error);
-    return null;
-  }
-
-  return data;
-}
-// Create a new student
-export async function createEstudiante(estudiante) {
-  const { data, error } = await supabase
-    .from("Estudiante")
-    .insert([estudiante]);
-
-  if (error) {
-    console.error("Error creating student:", error);
-    return null;
-  }
-
-  return data;
-}
-
-// Read a student by ID
-export async function getEstudianteById(id) {
-  const { data, error } = await supabase
-    .from("Estudiante")
-    .select("*")
-    .eq("id", id)
-    .single();
+// Read all students
+export async function getStudents() {
+  const { data, error } = await supabase.from("Estudiantes").select("*");
 
   if (error) {
     console.error("Error fetching student:", error);
@@ -97,14 +50,15 @@ export async function getEstudianteById(id) {
 }
 
 // Update a student by ID
-export async function updateEstudiante(id, updatedEstudiante) {
+export async function updateStudent(student) {
   const { data, error } = await supabase
-    .from("Estudiante")
-    .update(updatedEstudiante)
-    .eq("id", id);
+    .from("Estudiantes")
+    .update(student)
+    .eq("id", student.id)
+    .select();
 
   if (error) {
-    console.error("Error updating student:", error);
+    console.log("Error updating student:", error);
     return null;
   }
 
@@ -112,14 +66,95 @@ export async function updateEstudiante(id, updatedEstudiante) {
 }
 
 // Delete a student by ID
-export async function deleteEstudiante(id) {
+export async function deleteStudent(student) {
   const { data, error } = await supabase
-    .from("Estudiante")
+    .from("Estudiantes")
     .delete()
-    .eq("id", id);
+    .eq("id", student.id)
+    .select();
 
   if (error) {
     console.error("Error deleting student:", error);
+    return null;
+  }
+
+  return data;
+}
+
+//------------------------------------------------------------
+//
+// Create a new user
+export async function createUser(user) {
+  const { data, error } = await supabase.from("Usuarios").insert({
+    name: user.name,
+    about: user.about,
+    rol: user.rol,
+    ubicacion: user.ubicacion,
+    email: user.email,
+    contrasena: user.contrasena,
+  });
+
+  if (error) {
+    console.error("Error creating user:", error);
+    return null;
+  }
+  return data;
+}
+
+// Read a user by ID
+export async function getUserById(user) {
+  const { data, error } = await supabase
+    .from("Usuarios")
+    .select("*")
+    .eq("id", user.id)
+    .single();
+
+  if (error) {
+    console.error("Error fetching user:", error);
+    return null;
+  }
+
+  return data;
+}
+
+// Read all users
+export async function getUsers() {
+  const { data, error } = await supabase.from("Usuarios").select("*");
+
+  if (error) {
+    console.error("Error fetching users:", error);
+    return null;
+  }
+
+  return data;
+}
+
+// Update a user by ID
+export async function updateUser(user) {
+  const { data, error } = await supabase
+    .from("Usuarios")
+    .update(user)
+    .eq("id", user.id)
+    .select();
+
+  if (error) {
+    console.log("Error updating user:", error);
+    return null;
+  }
+
+  return data;
+}
+
+// Delete a user by ID
+export async function deleteUser(user) {
+  const { data, error } = await supabase
+    .from("Usuarios")
+    .delete()
+    .eq("id", user.id)
+    .select();
+
+  if (error) {
+    console.error("Error deleting user:", error);
     return null;
   }
 

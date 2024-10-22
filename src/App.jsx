@@ -2,28 +2,25 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Home from "./pages/Home";
 import "./App.css";
 import { useEffect } from "react";
-import { Estudiante } from './Model/Estudiante.js';
-import { getStudentById } from "./dataBase/functions";
+import { Usuario } from './Model/Usuario.js';
+import { createUser } from "./dataBase/functions";
+
+let user = new Usuario({
+  id: 1,
+  name: "David",
+  about: "Esta es mi descripcion",
+  rol: "Profesor",
+  ubicacion: "Santiago de Cali",
+  email: "juan@gmail.com",
+  contrasena: "juandavid123"
+});
 
 function App() {
+  useEffect(() => {
 
-  useEffect(async () => {
-    let estudiante = new Estudiante({
-      id: 1,
-      name: "Juan Perez",
-      grado: "10",
-      jornada: "Mañana",
-      linguistica: 85,
-      logica: 90,
-      espacial: 75,
-      musical: 80,
-      interpersonal: 70,
-      kinestesico: 65
+    createUser(user).then(result => {
+      console.log(result)
     });
-
-    let result = await getStudentById(estudiante)
-
-    console.log(result);
   }, []);
 
   return (
