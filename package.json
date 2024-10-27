@@ -10,7 +10,11 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@emotion/react": "^11.13.3",
+    "@emotion/styled": "^11.13.0",
     "@heroicons/react": "^1.0.6",
+    "@mui/material": "^6.1.5",
+    "@mui/x-charts": "^7.21.0",
     "@supabase/supabase-js": "^2.45.4",
     "learningpathweb": "file:",
     "react": "^18.3.1",

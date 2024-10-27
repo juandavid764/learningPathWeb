@@ -4,7 +4,7 @@ import Navbar from "../components/Navbar";
 const Perfil = () => {
   return (
     <div>
-      <Navbar />
+      <h1>PERFIK</h1>
     </div>
   );
 };
