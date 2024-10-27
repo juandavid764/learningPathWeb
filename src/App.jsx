@@ -7,6 +7,7 @@ import Perfil from "./pages/Perfil.jsx";
 import Soporte from "./pages/Soporte.jsx";
 import Navbar from "./components/Navbar.jsx";
 import Login from "./pages/Login.jsx";
+import AgregarAlumno from './pages/AgregarAlumno.jsx';
 
 function App() {
   return (
@@ -21,6 +22,7 @@ function App() {
             <Route path="/evaluaciones" element={<Evaluaciones />} />
             <Route path="/perfil" element={<Perfil />} />
             <Route path="/soporte" element={<Soporte />} />
+            <Route path="/alumnos/agregar" element={<AgregarAlumno onSave={true} />} />
           </Routes>
         </div>
       </div>
