@@ -5,7 +5,7 @@ const Soporte = () => {
   return (
     <div>
       <Navbar />
-      <h1>Soporte</h1>
+      <h1>Soporte2</h1>
     </div>
   );
 };

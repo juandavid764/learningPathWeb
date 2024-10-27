@@ -1,0 +1,192 @@
+/* Estilos generales para el contenedor de la página */
+
+
+div {
+    padding: 20px;
+    font-family: Arial, sans-serif;
+  }
+  
+  /* Estilos para la tabla */
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+  }
+  
+  th, td {
+    padding: 12px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+  }
+  
+  th {
+    background-color: #f4f4f4;
+    color: #333;
+  }
+  
+  tr:hover {
+    background-color: #f1f1f1;
+  }
+  
+
+ /* Estilos para el botón "Agregar Alumno" */
+button {
+    padding: 12px 20px; /* Espacio interior mayor */
+    background-color: #6fcf97; /* Color de fondo actualizado */
+    color: white;
+    border: 2px solid transparent; /* Borde transparente inicial */
+    border-radius: 8px; /* Borde más redondeado */
+    cursor: pointer;
+    transition: background-color 0.3s, box-shadow 0.3s, border-color 0.3s; /* Transiciones suaves */
+    font-weight: bold; /* Texto en negrita */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Sombra suave */
+  }
+  
+  button:hover {
+    background-color: #45a049; /* Color al pasar el mouse */
+    box-shadow: 0 6px 8px rgba(0, 0, 0, 0.2); /* Sombra más intensa */
+    border-color: #45a049; /* Cambio en el color del borde */
+  }
+  
+  /* Estilos para los botones "Editar" y "Eliminar" */
+  button:nth-child(2),
+  button:nth-child(3) {
+    background-color: #91d5f2; /* Color para "Editar" */
+    margin-right: 5px;
+    margin-left: 5px;
+    border: 2px solid transparent;
+    border-radius: 8px;
+    font-weight: bold;
+    padding: 12px 20px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+  
+  button:nth-child(2):hover {
+    background-color: #007bb5; /* Color al pasar el mouse */
+    box-shadow: 0 6px 8px rgba(0, 0, 0, 0.2);
+    border-color: #007bb5;
+  }
+  
+  button:nth-child(3) {
+    background-color: #f88379; /* Color para "Eliminar" */
+  }
+  
+  button:nth-child(3):hover {
+    background-color: #d32f2f;
+    box-shadow: 0 6px 8px rgba(0, 0, 0, 0.2);
+    border-color: #d32f2f;
+  }
+  
+  /* Estilos para los campos de entrada dentro de la tabla */
+
+/* Estilos para el botón "Editar" */
+.editarbtn {
+    background-color: #a8f291; /* Color de fondo */
+    color: #333; /* Color del texto */
+    border: 2px solid transparent; /* Borde transparente */
+    border-radius: 8px; /* Bordes redondeados */
+    font-weight: bold; /* Texto en negrita */
+    padding: 12px 20px; /* Espaciado interior */
+    margin-right: 5px; /* Margen derecho */
+    cursor: pointer; /* Cursor de mano al pasar el mouse */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Sombra ligera */
+    transition: background-color 0.3s, box-shadow 0.3s, border-color 0.3s; /* Transiciones suaves */
+  }
+  
+  .editarbtn:hover {
+    background-color: #007bb5; /* Color de fondo al pasar el mouse */
+    border-color: #007bb5; /* Cambio de color del borde */
+    box-shadow: 0 6px 8px rgba(0, 0, 0, 0.2); /* Sombra más intensa */
+  }
+  .guardarbtn {
+    background-color: #a8f291; /* Color de fondo */
+    color: #333; /* Color del texto */
+    border: 2px solid transparent; /* Borde transparente */
+    border-radius: 8px; /* Bordes redondeados */
+    font-weight: bold; /* Texto en negrita */
+    padding: 12px 20px; /* Espaciado interior */
+    margin-right: 5px; /* Margen derecho */
+    cursor: pointer; /* Cursor de mano al pasar el mouse */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Sombra ligera */
+    transition: background-color 0.3s, box-shadow 0.3s, border-color 0.3s; /* Transiciones suaves */
+  }
+  
+  .guardarbtn:hover {
+    background-color: #007bb5; /* Color de fondo al pasar el mouse */
+    border-color: #007bb5; /* Cambio de color del borde */
+    box-shadow: 0 6px 8px rgba(0, 0, 0, 0.2); /* Sombra más intensa */
+  }
+  /* Estilos para el modal como popup */
+.modal {
+    position: fixed; /* Para que ocupe toda la pantalla */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5); /* Fondo oscuro semitransparente */
+    display: flex;
+    align-items: center; /* Centrar verticalmente */
+    justify-content: center; /* Centrar horizontalmente */
+    z-index: 1000; /* Asegura que se muestre por encima de otros elementos */
+  }
+  
+  .modal-content {
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+    text-align: center;
+    width: 25%;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Añade una sombra para darle efecto de popup */
+    z-index: 1001; /* Para asegurarse de que esté por encima del fondo oscuro */
+  }
+  
+  .modal-content h2 {
+    margin-bottom: 10px;
+  }
+  
+  .modal-content p {
+    margin-bottom: 20px;
+  }
+  
+  /* Estilos para los botones del modal */
+  .confirmarbtn {
+    background-color: #f44336;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-right: 10px;
+  }
+  
+  .cancelarbtn {
+    background-color: #bbb;
+    color: white;
+    padding: 14px 20px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: bold;
+  }
+  
+  .confirmarbtn:hover {
+    background-color: #d32f2f;
+  }
+  
+  .cancelarbtn:hover {
+    background-color: #999;
+  }
+  .search-input {
+    width: 40%; /* Ancho del campo de búsqueda */
+    padding: 10px; /* Espaciado interno */
+    border: 1px solid #007bff; /* Borde azul */
+    border-radius: 5px; /* Bordes redondeados */
+    font-size: 16px; /* Tamaño de texto */
+    transition: border-color 0.3s; /* Transición suave para el borde */
+    margin-right: 10px; /* Espacio a la derecha del input */
+  }
+  
+  .search-input:focus {
+    border-color: #00b318; /* Color del borde al enfocar */
+    outline: none; /* Elimina el contorno predeterminado */
+  }
