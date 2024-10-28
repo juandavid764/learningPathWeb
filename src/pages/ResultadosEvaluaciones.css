@@ -1,0 +1,44 @@
+.resultados-container {
+    padding: 20px;
+    max-width: 600px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.resultados-lista {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+.resultado-item {
+    background-color: #e9f0f9;
+    padding: 10px;
+    border-radius: 8px;
+    border: 1px solid #cdd7e5;
+}
+
+.resultado-item h3 {
+    margin: 0;
+}
+
+.comentarios {
+    width: 100%;
+    padding: 10px;
+    font-size: 1em;
+    margin-bottom: 20px;
+}
+
+.btn-editar {
+    background-color: #4a90e2;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.btn-editar:hover {
+    background-color: #3d7ab6;
+}
