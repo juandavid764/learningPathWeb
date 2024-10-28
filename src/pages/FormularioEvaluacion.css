@@ -1,32 +1,75 @@
+.formulario-evaluacion {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-family: Arial, sans-serif;
+}
+
 .formulario-container {
-    padding: 20px;
-    max-width: 500px;
-    margin: 0 auto;
+    background-color: #f2f2f2;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+    width: 80%;
+    max-width: 600px;
+}
+
+h2 {
+    color: #333;
+    margin-bottom: 20px;
     text-align: center;
 }
 
-form label {
+label {
     display: block;
-    margin: 15px 0;
-    text-align: left;
+    margin-top: 15px;
+    color: #333;
+    font-weight: bold;
 }
 
-form input {
+input[type="text"],
+input[type="number"],
+textarea {
     width: 100%;
-    padding: 8px;
+    padding: 10px;
     margin-top: 5px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-size: 16px;
+    color: #333;
 }
 
-.btn-submit {
-    background-color: #28a745;
-    color: white;
-    padding: 10px 20px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
+.fila-datos {
+    display: flex;
+    gap: 10px;
     margin-top: 15px;
 }
 
+.inteligencias-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+    margin-top: 15px;
+}
+
+textarea.comentarios {
+    height: 100px;
+    resize: vertical;
+}
+
+.btn-submit {
+    width: 100%;
+    padding: 12px;
+    margin-top: 20px;
+    background-color: #333;
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    font-size: 18px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
 .btn-submit:hover {
-    background-color: #218838;
+    background-color: #555;
 }
