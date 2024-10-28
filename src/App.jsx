@@ -11,6 +11,9 @@ import Soporte from "./pages/Soporte.jsx";
 import Navbar from "./components/Navbar.jsx";
 import Login from "./pages/Login.jsx";
 import AgregarAlumno from './pages/AgregarAlumno.jsx';
+import EditarPerfil from "./pages/EditarPerfil.jsx"; 
+
+
 
 let user = new Usuario({
   id: 1,
@@ -43,6 +46,7 @@ function App() {
             <Route path="/perfil" element={<Perfil />} />
             <Route path="/soporte" element={<Soporte />} />
             <Route path="/alumnos/agregar" element={<AgregarAlumno onSave={true} />} />
+            <Route path="/editar-perfil" element={<EditarPerfil />} />
           </Routes>
         </div>
       </div>
