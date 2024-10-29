@@ -19,7 +19,7 @@ const Navbar = () => {
     { name: "Alumnos", link: "/alumnos", icon: <UsersIcon className="h-6 w-6" /> },
     { name: "Evaluaciones", link: "/evaluaciones", icon: <ClipboardListIcon className="h-6 w-6" /> },
     { name: "Formulario de Evaluación", link: "/evaluaciones/formulario", icon: <ClipboardCheckIcon className="h-6 w-6" /> },
-    { name: "Resultados de Evaluaciones", link: "/evaluaciones/resultados", icon: <DocumentTextIcon className="h-6 w-6" /> },
+    /*{ name: "Resultados de Evaluaciones", link: "/evaluaciones/resultados", icon: <DocumentTextIcon className="h-6 w-6" /> },*/
     { name: "Perfil", link: "/perfil", icon: <UserIcon className="h-6 w-6" /> },
   ];
 
