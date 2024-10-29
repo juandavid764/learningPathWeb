@@ -24,7 +24,7 @@ const Evaluaciones = () => {
                         <p>Estadísticas Inteligencias Múltiples</p>
                         <button 
                             className="btn-resultados" 
-                            onClick={() => window.location.href = '/resultados-evaluaciones'}
+                            onClick={() => window.location.href = '/evaluaciones/resultados'}
                         >
                             Resultado de Evaluaciones
                         </button>
