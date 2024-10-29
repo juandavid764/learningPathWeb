@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import Navbar from "../components/Navbar";
 import { useNavigate } from "react-router-dom";
-import Colombia from '../assets/Colombia.png';
+import Colombia from "../assets/Colombia.png"; 
 
 const Perfil = () => {
   const navigate = useNavigate();
