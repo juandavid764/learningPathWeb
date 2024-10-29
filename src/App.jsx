@@ -10,6 +10,7 @@ import Login from "./pages/Login.jsx";
 import AgregarAlumno from './pages/AgregarAlumno.jsx';
 import FormularioEvaluacion from './pages/FormularioEvaluacion.jsx';
 import ResultadosEvaluaciones from './pages/ResultadosEvaluaciones.jsx';
+import EditarPerfil from "./pages/EditarPerfil.jsx"; 
 
 function App() {
   return (
