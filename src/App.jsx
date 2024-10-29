@@ -8,9 +8,8 @@ import Soporte from "./pages/Soporte.jsx";
 import Navbar from "./components/Navbar.jsx";
 import Login from "./pages/Login.jsx";
 import AgregarAlumno from './pages/AgregarAlumno.jsx';
-import EditarPerfil from "./pages/EditarPerfil.jsx"; 
-
-
+import FormularioEvaluacion from './pages/FormularioEvaluacion.jsx';
+import ResultadosEvaluaciones from './pages/ResultadosEvaluaciones.jsx';
 
 function App() {
   return (
@@ -26,6 +25,8 @@ function App() {
             <Route path="/perfil" element={<Perfil />} />
             <Route path="/soporte" element={<Soporte />} />
             <Route path="/alumnos/agregar" element={<AgregarAlumno onSave={true} />} />
+            <Route path="/evaluaciones/formulario" element={<FormularioEvaluacion />} />
+            <Route path="/evaluaciones/resultados" element={<ResultadosEvaluaciones />} />
             <Route path="/editar-perfil" element={<EditarPerfil />} />
           </Routes>
         </div>
@@ -35,3 +36,4 @@ function App() {
 }
 
 export default App;
+
