@@ -1,15 +1,18 @@
 import React, { useState } from "react";
+import { useAuth } from "../context/AuthContext";
 
-const Login = ({ handleLogin }) => {
+const Login = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+  const { login } = useAuth();
 
   const onSubmit = (e) => {
     e.preventDefault();
-
-    // Simulamos un usuario logueado exitosamente
-    const userData = { name: username, role: "user" };
-    handleLogin(userData);
+    if (login(username, password)) {
+      alert("Inicio de sesión exitoso");
+    } else {
+      alert("Credenciales incorrectas");
+    }
   };
 
   return (
