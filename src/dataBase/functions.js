@@ -160,3 +160,20 @@ export async function deleteUser(user) {
 
   return data;
 }
+
+//Validar login
+export async function validateLogin(email, contrasena) {
+  const { data, error } = await supabase
+    .from("Usuarios")
+    .select("*")
+    .eq("email", email)
+    .eq("contrasena", contrasena)
+    .single();
+
+  if (error) {
+    console.error("Credenciales incorrectas:", error);
+    return null;
+  }
+
+  return data;
+}
