@@ -1,4 +1,9 @@
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+  Navigate,
+} from "react-router-dom";
 import Home from "./pages/Home";
 import "./App.css";
 import Alumnos from "./pages/Alumnos.jsx";
@@ -11,40 +16,51 @@ import AgregarAlumno from "./pages/AgregarAlumno.jsx";
 import FormularioEvaluacion from "./pages/FormularioEvaluacion.jsx";
 import ResultadosEvaluaciones from "./pages/ResultadosEvaluaciones.jsx";
 import EditarPerfil from "./pages/EditarPerfil.jsx";
-import { AuthProvider } from "./context/AuthContext.jsx";
+import { useAuth } from "./context/AuthContext.jsx";
 
 function App() {
+  const { logged } = useAuth();
+
   return (
-    <AuthProvider>
-      <Router>
-        <div className="flex">
-          <Navbar />
-          <div className="ml-64 w-full">
-            <Routes>
-              <Route path="/" element={<Login />} />
-              <Route path="/home" element={<Home />} />
-              <Route path="/alumnos" element={<Alumnos />} />
-              <Route path="/evaluaciones" element={<Evaluaciones />} />
-              <Route path="/perfil" element={<Perfil />} />
-              <Route path="/soporte" element={<Soporte />} />
-              <Route
-                path="/alumnos/agregar"
-                element={<AgregarAlumno onSave={true} />}
-              />
-              <Route
-                path="/evaluaciones/formulario"
-                element={<FormularioEvaluacion />}
-              />
-              <Route
-                path="/evaluaciones/resultados"
-                element={<ResultadosEvaluaciones />}
-              />
-              <Route path="/editar-perfil" element={<EditarPerfil />} />
-            </Routes>
-          </div>
+    <Router>
+      <div className="flex">
+        {logged && <Navbar />}
+        <div className={logged ? "ml-64 w-full" : "w-full"}>
+          <Routes>
+            {/* Esto debería funcionar pero se me recarga, idk why */}
+            <Route
+              path="/"
+              element={logged ? <Navigate to="/home" /> : <Login />}
+            />
+
+            {logged ? (
+              <>
+                <Route path="/home" element={<Home />} />
+                <Route path="/alumnos" element={<Alumnos />} />
+                <Route path="/evaluaciones" element={<Evaluaciones />} />
+                <Route path="/perfil" element={<Perfil />} />
+                <Route path="/soporte" element={<Soporte />} />
+                <Route
+                  path="/alumnos/agregar"
+                  element={<AgregarAlumno onSave={true} />}
+                />
+                <Route
+                  path="/evaluaciones/formulario"
+                  element={<FormularioEvaluacion />}
+                />
+                <Route
+                  path="/evaluaciones/resultados"
+                  element={<ResultadosEvaluaciones />}
+                />
+                <Route path="/editar-perfil" element={<EditarPerfil />} />
+              </>
+            ) : (
+              <Route path="*" element={<Navigate to="/" />} />
+            )}
+          </Routes>
         </div>
-      </Router>
-    </AuthProvider>
+      </div>
+    </Router>
   );
 }
 

@@ -1,17 +1,27 @@
 import React, { useState } from "react";
 import { useAuth } from "../context/AuthContext";
+import { validateLogin } from "../dataBase/functions";
 
 const Login = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
-  const { login } = useAuth();
+  const [error, setError] = useState(null);
+  const { setLogged, setUser } = useAuth();
 
-  const onSubmit = (e) => {
+  const handleLogin = async (e) => {
     e.preventDefault();
-    if (login(username, password)) {
-      alert("Inicio de sesión exitoso");
+    const data = await validateLogin(username, password);
+    setUsername("");
+    setPassword("");
+    if (!data) {
+      setError("Credenciales incorrectas");
+      console.error("Error de autenticación");
     } else {
-      alert("Credenciales incorrectas");
+      setError(null);
+      // Redirecciona o maneja el inicio de sesión exitoso aquí
+      console.log("Inicio de sesión exitoso", data);
+      setUser(data);
+      setLogged(true);
     }
   };
 
@@ -19,7 +29,7 @@ const Login = () => {
     <div className="flex justify-center items-center h-screen bg-white-100">
       <div className="p-6 bg-white rounded-lg shadow-md ">
         <h2 className="text-2xl font-bold mb-4">Iniciar Sesión</h2>
-        <form onSubmit={onSubmit}>
+        <form onSubmit={handleLogin}>
           <div className="mb-4">
             <label className="block mb-2">Usuario</label>
             <input
@@ -46,6 +56,7 @@ const Login = () => {
           >
             Iniciar Sesión
           </button>
+          {error && <p style={{ color: "red" }}>{error}</p>}
         </form>
       </div>
     </div>
