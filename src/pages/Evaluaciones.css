@@ -7,6 +7,7 @@
 h2 {
     font-size: 2em;
     margin-bottom: 20px;
+    color: #333;
 }
 
 .search-bar {
@@ -30,6 +31,11 @@ h2 {
     border-radius: 5px;
     margin-left: 10px;
     cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.btn-search:hover {
+    background-color: #555;
 }
 
 .tarjetas-container {
@@ -44,11 +50,14 @@ h2 {
     border: 1px solid #ddd;
     border-radius: 10px;
     padding: 20px;
-    width: 200px;
+    width: 350px;
     text-align: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 .tarjeta h3 {
+    font-size: 1.2em;
+    color: #333;
     margin-bottom: 10px;
 }
 
@@ -59,19 +68,58 @@ h2 {
     margin: 10px 0;
 }
 
-.tarjeta p {
-    font-size: 0.8em;
-    color: #666;
-    margin-top: 5px;
+.skills-bars {
+    display: flex;
+    flex-direction: column;
+    gap: 12px; /* Mayor espacio entre barras */
+    margin-top: 15px;
+    align-items: flex-start;
 }
 
-.btn-resultados {
+.skill-bar {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    width: 100%;
+}
+
+.skill-bar span {
+    font-size: 0.85em;
+    color: #333;
+    min-width: 120px; /* Más espacio para nombres largos */
+    text-align: left;
+    white-space: nowrap;
+}
+
+.bar {
+    height: 12px;
+    border-radius: 5px;
+    flex: 1;
+}
+
+.bar[data-skill="Lingüística"] { background-color: #FF6384; }
+.bar[data-skill="Lógica"] { background-color: #36A2EB; }
+.bar[data-skill="Espacial"] { background-color: #FFCE56; }
+.bar[data-skill="Musical"] { background-color: #4BC0C0; }
+.bar[data-skill="Interpersonal"] { background-color: #9966FF; }
+.bar[data-skill="Kinestésico"] { background-color: #FF9F40; }
+
+.btn-resultados, .btn-formulario {
     background-color: #333;
     color: white;
-    padding: 5px 10px;
+    padding: 8px 16px;
     border: none;
     border-radius: 5px;
     cursor: pointer;
     margin-top: 10px;
+    transition: background-color 0.3s;
 }
+
+.btn-resultados:hover, .btn-formulario:hover {
+    background-color: #555;
+}
+
+
+
+
 
