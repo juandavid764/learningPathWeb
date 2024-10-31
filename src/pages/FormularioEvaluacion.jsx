@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
 import "./FormularioEvaluacion.css";
+import { updateForm } from '../dataBase/functions.js'; 
+import { getStudents, updateStudent, deleteStudent } from "../dataBase/functions.js";// Importa la función de actualización
 
 const FormularioEvaluacion = () => {
     const [nombre, setNombre] = useState('');
     const [id, setId] = useState('');
-    const [grado, setGrado] = useState('');
-    const [jornada, setJornada] = useState('');
     const [linguistica, setLinguistica] = useState('');
     const [logica, setLogica] = useState('');
     const [espacial, setEspacial] = useState('');
@@ -14,26 +14,35 @@ const FormularioEvaluacion = () => {
     const [kinestesico, setKinestesico] = useState('');
     const [comentarios, setComentarios] = useState('');
 
-    const handleSubmit = (e) => {
+    const handleSave = async (e) => {
         e.preventDefault();
-        console.log('Formulario enviado', { nombre, id, grado, jornada, linguistica, logica, espacial, musical, interpersonal, kinestesico, comentarios });
+        
+        const student = {
+            id: id,
+            name: nombre,
+            linguistica: linguistica,
+            logica: logica,
+            espacial: espacial,
+            musical: musical,
+            interpersonal: interpersonal,
+            kinestesico: kinestesico,
+            comentarios: comentarios,
+        };
+
+        const result = await updateStudent(student);
+
+        if (result) {
+            console.log('Estudiante actualizado correctamente:', result);
+        } else {
+            console.log('Error al actualizar el estudiante');
+        }
     };
 
     return (
         <div className="formulario-evaluacion">
             <h2>Formulario de Evaluación</h2>
             <div className="formulario-container">
-                <form onSubmit={handleSubmit}>
-                    <label>
-                        Nombre del Estudiante:
-                        <input
-                            type="text"
-                            value={nombre}
-                            onChange={(e) => setNombre(e.target.value)}
-                            required
-                        />
-                    </label>
-
+                <form onSubmit={handleSave}>
                     <div className="fila-datos">
                         <label>
                             ID:
@@ -41,24 +50,6 @@ const FormularioEvaluacion = () => {
                                 type="text"
                                 value={id}
                                 onChange={(e) => setId(e.target.value)}
-                                required
-                            />
-                        </label>
-                        <label>
-                            Grado:
-                            <input
-                                type="text"
-                                value={grado}
-                                onChange={(e) => setGrado(e.target.value)}
-                                required
-                            />
-                        </label>
-                        <label>
-                            Jornada:
-                            <input
-                                type="text"
-                                value={jornada}
-                                onChange={(e) => setJornada(e.target.value)}
                                 required
                             />
                         </label>
@@ -120,16 +111,6 @@ const FormularioEvaluacion = () => {
                             />
                         </label>
                     </div>
-
-                    <label>
-                        Comentarios:
-                        <textarea
-                            value={comentarios}
-                            onChange={(e) => setComentarios(e.target.value)}
-                            className="comentarios"
-                            placeholder="Escribe tus comentarios aquí..."
-                        ></textarea>
-                    </label>
                     <button type="submit" className="btn-submit">Guardar Evaluación</button>
                 </form>
             </div>
@@ -138,3 +119,4 @@ const FormularioEvaluacion = () => {
 };
 
 export default FormularioEvaluacion;
+
