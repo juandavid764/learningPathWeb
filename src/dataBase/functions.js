@@ -25,7 +25,7 @@ export async function createStudent(student) {
 export async function getStudentStats(id) {
   const { data, error } = await supabase
     .from("Estudiantes")
-    .select("name, grado, jornada, linguistica, logica, espacial, musical, interpersonal, kinestesico")
+    .select("*")
     .eq("id", id)
     .single();
 
@@ -35,9 +35,6 @@ export async function getStudentStats(id) {
   }
   return data;
 }
-
-
-
 
 // Read a student by ID
 export async function getStudentById(student) {
@@ -199,22 +196,22 @@ export async function validateLogin(email, contrasena) {
 //------------------------------------------------------------
 export async function updateForm(student) {
   const { data, error } = await supabase
-      .from("Estudiantes")
-      .update({
-          linguistica: student.linguistica,
-          logica: student.logica,
-          espacial: student.espacial,
-          musical: student.musical,
-          interpersonal: student.interpersonal,
-          kinestesico: student.kinestesico,
-          comentarios: student.comentarios
-      })
-      .eq("id", student.id)
-      .select();
+    .from("Estudiantes")
+    .update({
+      linguistica: student.linguistica,
+      logica: student.logica,
+      espacial: student.espacial,
+      musical: student.musical,
+      interpersonal: student.interpersonal,
+      kinestesico: student.kinestesico,
+      comentarios: student.comentarios,
+    })
+    .eq("id", student.id)
+    .select();
 
   if (error) {
-      console.log("Error updating student:", error);
-      return null;
+    console.log("Error updating student:", error);
+    return null;
   }
 
   return data;
