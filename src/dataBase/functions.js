@@ -21,20 +21,19 @@ export async function createStudent(student) {
   return data;
 }
 
-// Read a student by ID solo inteligencias
-export async function getStudentStats(id) {
+// Obtiene todos los estudiantes de la tabla "Estudiantes"
+export async function getStudentStats() {
   const { data, error } = await supabase
     .from("Estudiantes")
-    .select("name, grado, jornada, linguistica, logica, espacial, musical, interpersonal, kinestesico")
-    .eq("id", id)
-    .single();
+    .select("*");
 
   if (error) {
-    console.error("Error fetching student:", error);
-    return null;
+    console.error("Error fetching students:", error);
+    return [];
   }
   return data;
 }
+
 
 
 

@@ -97,7 +97,7 @@ h2 {
     flex: 1;
 }
 
-.bar[data-skill="Lingüística"] { background-color: #FF6384; }
+.bar[data-skill="Lingüística"] { background-color: #ff4384; }
 .bar[data-skill="Lógica"] { background-color: #36A2EB; }
 .bar[data-skill="Espacial"] { background-color: #FFCE56; }
 .bar[data-skill="Musical"] { background-color: #4BC0C0; }

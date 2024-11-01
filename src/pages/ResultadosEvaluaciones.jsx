@@ -1,44 +1,76 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
+import { useParams } from "react-router-dom";
+import { getStudentById } from "../dataBase/functions"; // Importa la función correcta
 import "./ResultadosEvaluaciones.css";
 
 const ResultadosEvaluaciones = () => {
-    const estudiante = {
-        nombre: 'Santiago Collantes',
-        codigo: '12345',
-        grado: '1ro',
-        jornada: 'Diurna',
-        inteligencias: [
-            { tipo: 'Lingüística', puntaje: 85 },
-            { tipo: 'Lógico', puntaje: 70 },
-            { tipo: 'Espacial', puntaje: 90 },
-            { tipo: 'Musical', puntaje: 75 },
-            { tipo: 'Interpersonal', puntaje: 65 },
-            { tipo: 'Kinestésico', puntaje: 80 },
-        ],
-    };
+    const { id } = useParams();
+    const [estudiante, setEstudiante] = useState(null);
+
+    useEffect(() => {
+        const fetchEstudiante = async () => {
+            const data = await getStudentById({ id }); // Pasa el ID como objeto a la función
+            if (data) {
+                setEstudiante(data);
+            }
+        };
+        fetchEstudiante();
+    }, [id]);
+
+    if (!estudiante) {
+        return <p>Cargando resultados...</p>;
+    }
 
     return (
         <div className="resultados-container">
-            <h2>Resultados de Evaluación</h2>
+            <h2>Resultados de Evaluación para {estudiante.name}</h2>
             <div className="estudiante-info">
-                <p>Nombre: {estudiante.nombre}</p>
-                <p>Código: {estudiante.codigo}</p>
-                <p>Grado: {estudiante.grado}</p>
-                <p>Jornada: {estudiante.jornada}</p>
+                <p><strong>Nombre:</strong> {estudiante.name}</p>
+                <p><strong>Código:</strong> {id}</p>
+                <p><strong>Grado:</strong> {estudiante.grado}</p>
+                <p><strong>Jornada:</strong> {estudiante.jornada}</p>
             </div>
             <div className="resultados-lista">
-                {estudiante.inteligencias.map((inteligencia, index) => (
-                    <div key={index} className="resultado-item">
-                        <h3>{inteligencia.tipo}</h3>
-                        <p>Puntaje: {inteligencia.puntaje}</p>
-                    </div>
-                ))}
+                <div className="resultado-item">
+                    <h3>Lingüística</h3>
+                    <p>Puntaje: {estudiante.linguistica}</p>
+                </div>
+                <div className="resultado-item">
+                    <h3>Lógica</h3>
+                    <p>Puntaje: {estudiante.logica}</p>
+                </div>
+                <div className="resultado-item">
+                    <h3>Espacial</h3>
+                    <p>Puntaje: {estudiante.espacial}</p>
+                </div>
+                <div className="resultado-item">
+                    <h3>Musical</h3>
+                    <p>Puntaje: {estudiante.musical}</p>
+                </div>
+                <div className="resultado-item">
+                    <h3>Interpersonal</h3>
+                    <p>Puntaje: {estudiante.interpersonal}</p>
+                </div>
+                <div className="resultado-item">
+                    <h3>Kinestésico</h3>
+                    <p>Puntaje: {estudiante.kinestesico}</p>
+                </div>
             </div>
-            <h2>Comentarios estudiante</h2> 
-            <textarea className="comentarios" placeholder="Comentarios..."></textarea>
+            <h2>Comentarios del Estudiante</h2> 
+            <textarea 
+                className="comentarios" 
+                placeholder="Comentarios..."
+                defaultValue={estudiante.comentarios || ""}
+            ></textarea>
             <button className="btn-editar">Editar Formulario de Resultados</button>
         </div>
     );
 };
 
 export default ResultadosEvaluaciones;
+
+
+
+
+
+
