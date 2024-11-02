@@ -1,10 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { getStudentStats } from "../dataBase/functions.js";
 import { Bar } from "react-chartjs-2";
-import "./Evaluaciones.css";
 import { useNavigate } from "react-router-dom";
-
-// Importa los componentes y tipos necesarios de Chart.js
+import "./Evaluaciones.css";
 import {
   Chart as ChartJS,
   CategoryScale,
@@ -14,6 +12,7 @@ import {
   Tooltip,
   Legend,
 } from "chart.js";
+
 ChartJS.register(
   CategoryScale,
   LinearScale,
@@ -30,34 +29,35 @@ const Evaluaciones = () => {
   const [filteredEstudiantes, setFilteredEstudiantes] = useState([]);
   const navigate = useNavigate();
 
-  // Función para traer los datos de la base de datos
   const fetchEstudiantes = async () => {
-    const ids = [1, 2, 3, 4]; // Ajusta los IDs según sea necesario
-    const fetchedEstudiantes = [];
-
-    for (const id of ids) {
-      const data = await getStudentStats(id);
-      if (data) {
-        fetchedEstudiantes.push({ id, ...data });
-      }
-    }
+    const data = await getStudentStats();
+    const fetchedEstudiantes = data.map((student) => ({
+      id: student.id,
+      name: student.name, // Aseguramos que use el nombre correcto de la base de datos
+      grado: student.grado || "N/A",
+      jornada: student.jornada || "N/A",
+      linguistica: student.linguistica || null,
+      logica: student.logica || null,
+      espacial: student.espacial || null,
+      musical: student.musical || null,
+      interpersonal: student.interpersonal || null,
+      kinestesico: student.kinestesico || null,
+    }));
 
     setEstudiantes(fetchedEstudiantes);
-    setFilteredEstudiantes(fetchedEstudiantes); // Inicializa con todos los estudiantes
+    setFilteredEstudiantes(fetchedEstudiantes);
     setLoading(false);
   };
 
-  // Efecto para cargar los estudiantes al montar el componente
   useEffect(() => {
     fetchEstudiantes();
   }, []);
 
-  // Función de búsqueda para filtrar estudiantes
   const handleSearch = () => {
     const filtered = estudiantes.filter(
       (est) =>
-        est.nombre.toLowerCase().includes(searchTerm.toLowerCase()) ||
-        est.id.toString() === searchTerm
+        est.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
+        est.id.toString().includes(searchTerm)
     );
     setFilteredEstudiantes(filtered);
   };
@@ -85,10 +85,11 @@ const Evaluaciones = () => {
       <div className="tarjetas-container">
         {filteredEstudiantes.map((est) => (
           <div key={est.id} className="tarjeta">
-            <h3>{est.nombre}</h3>
+            <h3>{est.name}</h3>
+            <p>Grado: {est.grado}</p>
+            <p>Jornada: {est.jornada}</p>
             <p>Estadísticas Inteligencias Múltiples</p>
 
-            {/* Gráfico de barras unificado */}
             <Bar
               data={{
                 labels: [
@@ -110,7 +111,14 @@ const Evaluaciones = () => {
                       est.interpersonal,
                       est.kinestesico,
                     ],
-                    backgroundColor: "rgba(54, 162, 235, 0.6)",
+                    backgroundColor: [
+                      "#40bb2d",
+                      "#0021c8",
+                      "#8526b8",
+                      "#e9d82b",
+                      "#ec574a",
+                      "#c85dbb",
+                    ],
                   },
                 ],
               }}
@@ -127,7 +135,7 @@ const Evaluaciones = () => {
 
             <button
               className="btn-resultados"
-              onClick={() => navigate("/evaluaciones/resultados")}
+              onClick={() => navigate(`/evaluaciones/resultados/${est.id}`)}
             >
               Resultado de Evaluaciones
             </button>
@@ -135,10 +143,10 @@ const Evaluaciones = () => {
         ))}
       </div>
       <button
-        className="btn-resultados"
-        onClick={() => navigate("/evaluaciones/Formulario")}
+        className="btn-formulario"
+        onClick={() => navigate("/evaluaciones/formulario")}
       >
-        Llenar formulario de estudiante
+        Llenar Formulario de Evaluaciones
       </button>
     </div>
   );

@@ -27,7 +27,6 @@ function App() {
         {logged && <Navbar />}
         <div className={logged ? "ml-64 w-full" : "w-full"}>
           <Routes>
-            {/* Esto debería funcionar pero se me recarga, idk why */}
             <Route
               path="/"
               element={logged ? <Navigate to="/home" /> : <Login />}
@@ -49,7 +48,7 @@ function App() {
                   element={<FormularioEvaluacion />}
                 />
                 <Route
-                  path="/evaluaciones/resultados"
+                  path="/evaluaciones/resultados/:id"
                   element={<ResultadosEvaluaciones />}
                 />
                 <Route path="/editar-perfil" element={<EditarPerfil />} />
@@ -65,3 +64,4 @@ function App() {
 }
 
 export default App;
+
