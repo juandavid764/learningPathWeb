@@ -21,19 +21,13 @@ export async function createStudent(student) {
   return data;
 }
 
-// Read a student by ID solo inteligencias
-export async function getStudentStats(id) {
-  const { data, error } = await supabase
-    .from("Estudiantes")
-    .select(
-      "name, grado, jornada, linguistica, logica, espacial, musical, interpersonal, kinestesico"
-    )
-    .eq("id", id)
-    .single();
+// Obtiene todos los estudiantes de la tabla "Estudiantes"
+export async function getStudentStats() {
+  const { data, error } = await supabase.from("Estudiantes").select("*");
 
   if (error) {
-    console.error("Error fetching student:", error);
-    return null;
+    console.error("Error fetching students:", error);
+    return [];
   }
   return data;
 }
@@ -206,6 +200,7 @@ export async function updateForm(student) {
       musical: student.musical,
       interpersonal: student.interpersonal,
       kinestesico: student.kinestesico,
+      comentarios: student.comentarios,
     })
     .eq("id", student.id)
     .select();

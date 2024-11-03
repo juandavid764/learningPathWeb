@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom"; // Importa useNavigate
+import { useNavigate } from "react-router-dom";
 import Navbar from "../components/Navbar";
 import "./AlumnosCss.css";
 import { getStudents, updateStudent, deleteStudent } from "../dataBase/functions.js";
@@ -10,7 +10,7 @@ const Alumnos = () => {
   const [editingStudent, setEditingStudent] = useState(null);
   const [studentToDelete, setStudentToDelete] = useState(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const navigate = useNavigate(); // Inicializa useNavigate
+  const navigate = useNavigate();
 
   useEffect(() => {
     const fetchStudents = async () => {
@@ -26,7 +26,7 @@ const Alumnos = () => {
   };
 
   const handleAddButtonClick = () => {
-    navigate('/alumnos/agregar'); // Redirige a la página de agregar alumno
+    navigate('/alumnos/agregar');
   };
 
   const handleEditStudent = async (student) => {
@@ -70,17 +70,16 @@ const Alumnos = () => {
 
   return (
     <div>
-      <div>
-        <input
-          type="text"
-          placeholder="Buscar alumno por nombre"
-          value={searchTerm}
-          onChange={handleSearchChange}
-          className="search-input"
-        />
-        <button onClick={handleAddButtonClick}>Agregar Alumno</button>
-      </div>
-
+      <Navbar />
+      <input
+        type="text"
+        placeholder="Buscar alumno por nombre"
+        value={searchTerm}
+        onChange={handleSearchChange}
+        className="search-input"
+      />
+      <button  onClick ={handleAddButtonClick}>Agregar Alumno</button> 
+      
       <table>
         <thead>
           <tr>
@@ -160,3 +159,4 @@ const Alumnos = () => {
 };
 
 export default Alumnos;
+

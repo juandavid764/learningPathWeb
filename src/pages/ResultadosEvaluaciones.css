@@ -4,43 +4,45 @@
     text-align: center;
 }
 
-h2 {
+.resultados-container h2 {
     font-size: 2em;
     margin-bottom: 20px;
 }
 
-.estudiante-info p {
+.resultados-container .estudiante-info p {
     font-size: 1.2em;
     margin: 5px 0;
 }
 
-.resultados-lista {
+.resultados-container .resultados-lista {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 15px;
     margin: 20px 0;
 }
 
-.resultado-item {
+.resultados-container .resultado-item {
     background-color: #00a9ff;
     border: 1px solid #00a9ff;
     border-radius: 10px;
     padding: 15px;
+    color: #fff; /* Cambia el color de texto a blanco para mejor contraste */
 }
 
-.resultado-item h3 {
+.resultados-container .resultado-item h3 {
     font-size: 1.1em;
 }
 
-.comentarios {
+.resultados-container .comentarios {
     width: 100%;
     padding: 10px;
     margin-top: 20px;
     border: 1px solid #ccc;
     border-radius: 5px;
+    resize: vertical; /* Permite al usuario ajustar la altura del textarea */
 }
 
-.btn-editar {
+.resultados-container .btn-editar {
     background-color: #4CAF50;
     color: white;
     padding: 10px 20px;
@@ -48,5 +50,11 @@ h2 {
     border-radius: 5px;
     cursor: pointer;
     margin-top: 10px;
+    transition: background-color 0.3s ease;
 }
+
+.resultados-container .btn-editar:hover {
+    background-color: #45a049; /* Cambia de color al pasar el ratón */
+}
+
 

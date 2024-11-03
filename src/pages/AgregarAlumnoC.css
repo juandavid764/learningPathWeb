@@ -32,7 +32,7 @@
     transition: border-color 0.3s; /* Transición suave para el borde */
   }
   
- .agregarStudentForm:focus {
+.agregarStudentForm:focus {
     border-color: #007bff; /* Color del borde al enfocar */
     outline: none; /* Elimina el contorno predeterminado */
   }
