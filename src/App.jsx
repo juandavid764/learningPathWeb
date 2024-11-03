@@ -23,9 +23,9 @@ function App() {
 
   return (
     <Router>
-      <div className="flex">
+      <div className="flex w-full">
         {logged && <Navbar />}
-        <div className={logged ? "ml-64 w-full" : "w-full"}>
+        <div className={logged ? "ml-44 w-full" : "w-full"}>
           <Routes>
             <Route
               path="/"

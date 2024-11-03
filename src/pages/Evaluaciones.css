@@ -1,125 +1,134 @@
 .evaluaciones-container {
-    width: 80%;
-    margin: 0 auto;
-    text-align: center;
+  width: 100%;
+  margin: 0 auto;
+  text-align: center;
 }
 
 h2 {
-    font-size: 2em;
-    margin-bottom: 20px;
-    color: #333;
+  font-size: 2em;
+  margin-bottom: 20px;
+  color: #333;
 }
 
 .search-bar {
-    display: flex;
-    justify-content: center;
-    margin-bottom: 20px;
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
 }
 
 .search-input {
-    width: 60%;
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
+  width: 60%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
 }
 
 .btn-search {
-    background-color: #333;
-    color: white;
-    padding: 10px 20px;
-    border: none;
-    border-radius: 5px;
-    margin-left: 10px;
-    cursor: pointer;
-    transition: background-color 0.3s;
+  background-color: #333;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  margin-left: 10px;
+  cursor: pointer;
+  transition: background-color 0.3s;
 }
 
 .btn-search:hover {
-    background-color: #555;
+  background-color: #555;
 }
 
 .tarjetas-container {
-    display: flex;
-    gap: 15px;
-    flex-wrap: wrap;
-    justify-content: center;
+  display: flex;
+  gap: 15px;
+  flex-wrap: wrap;
+  justify-content: center;
 }
 
 .tarjeta {
-    background-color: #f9f9f9;
-    border: 1px solid #ddd;
-    border-radius: 10px;
-    padding: 20px;
-    width: 350px;
-    text-align: center;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  background-color: #f9f9f9;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  padding: 20px;
+  width: 350px;
+  text-align: center;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 .tarjeta h3 {
-    font-size: 1.2em;
-    color: #333;
-    margin-bottom: 10px;
+  font-size: 1.2em;
+  color: #333;
+  margin-bottom: 10px;
 }
 
 .progress-bar {
-    height: 10px;
-    background-color: #4CAF50;
-    border-radius: 5px;
-    margin: 10px 0;
+  height: 10px;
+  background-color: #4caf50;
+  border-radius: 5px;
+  margin: 10px 0;
 }
 
 .skills-bars {
-    display: flex;
-    flex-direction: column;
-    gap: 12px; /* Mayor espacio entre barras */
-    margin-top: 15px;
-    align-items: flex-start;
+  display: flex;
+  flex-direction: column;
+  gap: 12px; /* Mayor espacio entre barras */
+  margin-top: 15px;
+  align-items: flex-start;
 }
 
 .skill-bar {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  width: 100%;
 }
 
 .skill-bar span {
-    font-size: 0.85em;
-    color: #333;
-    min-width: 120px; /* Más espacio para nombres largos */
-    text-align: left;
-    white-space: nowrap;
+  font-size: 0.85em;
+  color: #333;
+  min-width: 120px; /* Más espacio para nombres largos */
+  text-align: left;
+  white-space: nowrap;
 }
 
 .bar {
-    height: 12px;
-    border-radius: 5px;
-    flex: 1;
+  height: 12px;
+  border-radius: 5px;
+  flex: 1;
 }
 
-.bar[data-skill="Lingüística"] { background-color: #ff4384; }
-.bar[data-skill="Lógica"] { background-color: #36A2EB; }
-.bar[data-skill="Espacial"] { background-color: #FFCE56; }
-.bar[data-skill="Musical"] { background-color: #4BC0C0; }
-.bar[data-skill="Interpersonal"] { background-color: #9966FF; }
-.bar[data-skill="Kinestésico"] { background-color: #FF9F40; }
-
-.btn-resultados, .btn-formulario {
-    background-color: #333;
-    color: white;
-    padding: 8px 16px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    margin-top: 10px;
-    transition: background-color 0.3s;
+.bar[data-skill="Lingüística"] {
+  background-color: #ff4384;
+}
+.bar[data-skill="Lógica"] {
+  background-color: #36a2eb;
+}
+.bar[data-skill="Espacial"] {
+  background-color: #ffce56;
+}
+.bar[data-skill="Musical"] {
+  background-color: #4bc0c0;
+}
+.bar[data-skill="Interpersonal"] {
+  background-color: #9966ff;
+}
+.bar[data-skill="Kinestésico"] {
+  background-color: #ff9f40;
 }
 
-.btn-resultados:hover, .btn-formulario:hover {
-    background-color: #555;
+.btn-resultados,
+.btn-formulario {
+  background-color: #333;
+  color: white;
+  padding: 8px 16px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-top: 10px;
+  transition: background-color 0.3s;
 }
 
-
-
-
-
+.btn-resultados:hover,
+.btn-formulario:hover {
+  background-color: #555;
+}

@@ -212,3 +212,33 @@ export async function updateForm(student) {
 
   return data;
 }
+//----------------------------------------------------
+export async function updateStudentIntelligences(
+  id,
+  linguistica,
+  logica,
+  espacial,
+  musical,
+  interpersonal,
+  kinestesico
+) {
+  const { data, error } = await supabase
+    .from("Estudiantes")
+    .update({
+      linguistica: linguistica,
+      logica: logica,
+      espacial: espacial,
+      musical: musical,
+      interpersonal: interpersonal,
+      kinestesico: kinestesico,
+    })
+    .eq("id", id)
+    .select();
+
+  if (error) {
+    console.log("Error updating student intelligences:", error);
+    return null;
+  }
+
+  return data;
+}

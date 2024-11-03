@@ -69,7 +69,7 @@ const Alumnos = () => {
   };
 
   return (
-    <div>
+    <div className="ml-5">
       <Navbar />
       <input
         type="text"
@@ -78,8 +78,13 @@ const Alumnos = () => {
         onChange={handleSearchChange}
         className="search-input"
       />
-      <button  onClick ={handleAddButtonClick}>Agregar Alumno</button> 
-      
+      <button
+        onClick={handleAddButtonClick}
+        className="btn-resultados bg-gray-900 text-white p-2 rounded mt-2"
+      >
+        Agregar Alumno
+      </button>
+
       <table>
         <thead>
           <tr>
@@ -131,11 +136,17 @@ const Alumnos = () => {
                 )}</td>
                 <td>
                   {editingStudent?.id === student.id ? (
-                    <button onClick={() => handleEditStudent(editingStudent)} className="guardarbtn">Guardar</button>
+                    <button onClick={() => handleEditStudent(editingStudent)} className="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded">Guardar</button>
+
                   ) : (
-                    <>
-                      <button onClick={() => handleEditButtonClick(student)} className="editarbtn">Editar</button>
-                      <button onClick={() => openDeleteModal(student.id)}>Eliminar</button>
+                    <><div className="flex">
+                      <div>
+                        <button onClick={() => handleEditButtonClick(student)} className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Editar</button>
+                      </div>
+                      <div>
+                        <button onClick={() => openDeleteModal(student.id)} className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded">Eliminar</button>
+                      </div>
+                    </div>
                     </>
                   )}
                 </td>
