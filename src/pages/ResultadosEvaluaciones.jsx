@@ -22,8 +22,9 @@ const ResultadosEvaluaciones = () => {
     }
 
     return (
+
         <div className="resultados-container">
-            <h2>Resultados de Evaluación para {estudiante.name}</h2>
+            <h2 className='font-semibold'>Detalles Resultados</h2>
             <div className="estudiante-info">
                 <p><strong>Nombre:</strong> {estudiante.name}</p>
                 <p><strong>Código:</strong> {id}</p>
@@ -31,38 +32,32 @@ const ResultadosEvaluaciones = () => {
                 <p><strong>Jornada:</strong> {estudiante.jornada}</p>
             </div>
             <div className="resultados-lista">
-                <div className="resultado-item">
-                    <h3>Lingüística</h3>
-                    <p>Puntaje: {estudiante.linguistica}</p>
+
+                <div className=" bg-[#40bb2d] bg-opacity-50 p-4 rounded-lg shadow-md mb-4">
+                    <h3 className="text-xl font-semibold">Lingüística</h3>
+                    <p className="text-gray-700">Puntaje: {estudiante.linguistica}</p>
                 </div>
-                <div className="resultado-item">
-                    <h3>Lógica</h3>
-                    <p>Puntaje: {estudiante.logica}</p>
+                <div className="resultado-item bg-[#0021c8] bg-opacity-50  p-4 rounded-lg shadow-md mb-4">
+                    <h3 className="text-xl font-semibold">Lógica</h3>
+                    <p className="text-gray-700">Puntaje: {estudiante.logica}</p>
                 </div>
-                <div className="resultado-item">
-                    <h3>Espacial</h3>
-                    <p>Puntaje: {estudiante.espacial}</p>
+                <div className="resultado-item bg-[#8526b8] bg-opacity-50 p-4 rounded-lg shadow-md mb-4">
+                    <h3 className="text-xl font-semibold">Espacial</h3>
+                    <p className="text-gray-700">Puntaje: {estudiante.espacial}</p>
                 </div>
-                <div className="resultado-item">
-                    <h3>Musical</h3>
-                    <p>Puntaje: {estudiante.musical}</p>
+                <div className="resultado-item bg-[#e9d82b] bg-opacity-50p-4 rounded-lg shadow-md mb-4">
+                    <h3 className="text-xl font-semibold">Musical</h3>
+                    <p className="text-gray-700">Puntaje: {estudiante.musical}</p>
                 </div>
-                <div className="resultado-item">
-                    <h3>Interpersonal</h3>
-                    <p>Puntaje: {estudiante.interpersonal}</p>
+                <div className="resultado-item bg-[#ec574a] bg-opacity-50 p-4 rounded-lg shadow-md mb-4">
+                    <h3 className="text-xl font-semibold">Interpersonal</h3>
+                    <p className="text-gray-700">Puntaje: {estudiante.interpersonal}</p>
                 </div>
-                <div className="resultado-item">
-                    <h3>Kinestésico</h3>
-                    <p>Puntaje: {estudiante.kinestesico}</p>
+                <div className="resultado-item bg-[#c85dbb] bg-opacity-50p-4 rounded-lg shadow-md mb-4">
+                    <h3 className="text-xl font-semibold">Kinestésico</h3>
+                    <p className="text-gray-700">Puntaje: {estudiante.kinestesico}</p>
                 </div>
             </div>
-            <h2>Comentarios del Estudiante</h2> 
-            <textarea 
-                className="comentarios" 
-                placeholder="Comentarios..."
-                defaultValue={estudiante.comentarios || ""}
-            ></textarea>
-            <button className="btn-editar">Editar Formulario de Resultados</button>
         </div>
     );
 };
