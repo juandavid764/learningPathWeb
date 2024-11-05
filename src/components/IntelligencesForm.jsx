@@ -10,6 +10,8 @@ import {
   interpersonal,
   kinestesico,
 } from "../dataBase/data";
+import { Snackbar, Alert } from "@mui/material";
+import { useNavigate } from "react-router-dom";
 
 const IntelligencesForm = () => {
   const [scores, setScores] = useState({
@@ -21,6 +23,14 @@ const IntelligencesForm = () => {
     interpersonal: 0,
     kinestesico: 0,
   });
+
+  const [openSnackbar, setOpenSnackbar] = useState(false);
+  const navigate = useNavigate();
+
+  const handleSnackbarClose = () => {
+    setOpenSnackbar(false);
+    navigate("/evaluaciones"); // Redirigir cuando se cierre el snackbar
+  };
 
   // Manejar el cambio del ID del estudiante
   const handleIdChange = (e) => {
@@ -37,10 +47,9 @@ const IntelligencesForm = () => {
     }));
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log("Puntajes finales:", scores);
-    updateStudentIntelligences(
+    const result = await updateStudentIntelligences(
       scores.id, // Aquí pasas el ID
       scores.linguistica,
       scores.logica,
@@ -49,6 +58,11 @@ const IntelligencesForm = () => {
       scores.interpersonal,
       scores.kinestesico
     );
+    if (result) {
+      setOpenSnackbar(true); // Muestra la notificación en caso de éxito
+    } else {
+      console.error("Error al enviar la evaluación.");
+    }
   };
 
   return (
@@ -125,6 +139,20 @@ const IntelligencesForm = () => {
           Enviar Evaluación
         </button>
       </form>
+      <Snackbar
+        open={openSnackbar}
+        autoHideDuration={3000}
+        onClose={handleSnackbarClose}
+        anchorOrigin={{ vertical: "top", horizontal: "center" }}
+      >
+        <Alert
+          onClose={handleSnackbarClose}
+          severity="success"
+          sx={{ width: "100%" }}
+        >
+          Evaluación completada con éxito!
+        </Alert>
+      </Snackbar>
     </div>
   );
 };
