@@ -1,9 +1,10 @@
 import React, { useState } from "react";
-import { IntelligenceForm } from "../components/IntelligencesForm";
+import IntelligencesForm from "../components/IntelligencesForm";
+
 const FormPage = () => {
   return (
-    <div className="flex justify-center items-center h-screen bg-white-100">
-      <IntelligenceForm></IntelligenceForm>
+    <div className="flex justify-center items-center h-screen ">
+      <IntelligencesForm></IntelligencesForm>
     </div>
   );
 };

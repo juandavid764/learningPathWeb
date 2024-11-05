@@ -17,6 +17,7 @@ import FormularioEvaluacion from "./pages/FormularioEvaluacion.jsx";
 import ResultadosEvaluaciones from "./pages/ResultadosEvaluaciones.jsx";
 import EditarPerfil from "./pages/EditarPerfil.jsx";
 import { useAuth } from "./context/AuthContext.jsx";
+import FormPage from "./pages/FormPage.jsx";
 
 function App() {
   const { logged } = useAuth();
@@ -43,10 +44,7 @@ function App() {
                   path="/alumnos/agregar"
                   element={<AgregarAlumno onSave={true} />}
                 />
-                <Route
-                  path="/evaluaciones/formulario"
-                  element={<FormularioEvaluacion />}
-                />
+                <Route path="/evaluaciones/formulario" element={<FormPage />} />
                 <Route
                   path="/evaluaciones/resultados/:id"
                   element={<ResultadosEvaluaciones />}
@@ -64,4 +62,3 @@ function App() {
 }
 
 export default App;
-
