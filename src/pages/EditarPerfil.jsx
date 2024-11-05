@@ -1,9 +1,12 @@
 import React, { useState, useEffect } from "react";
 import Navbar from "../components/Navbar";
 import { useNavigate } from "react-router-dom";
+import { useAuth } from "../context/AuthContext";
+import { getUserById, updateUser } from "../dataBase/functions";
 
 const EditarPerfil = () => {
   const navigate = useNavigate();
+  const { user, setUser } = useAuth();
   const [nombre, setNombre] = useState("");
   const [rol, setRol] = useState("");
   const [ubicacion, setUbicacion] = useState("");
@@ -11,21 +14,40 @@ const EditarPerfil = () => {
   const [sobreMi, setSobreMi] = useState("");
 
   useEffect(() => {
-    const storedUser = JSON.parse(localStorage.getItem('user'));
-    if (storedUser) {
-      setNombre(storedUser.nombre);
-      setRol(storedUser.rol);
-      setUbicacion(storedUser.ubicacion);
-      setEmail(storedUser.email);
-      setSobreMi(storedUser.sobreMi);
+    if (user?.id) {
+      // Cargar datos del usuario desde la base de datos
+      getUserById(user.id).then(userData => {
+        if (userData) {
+          setNombre(userData.name || "");
+          setRol(userData.rol || "");
+          setUbicacion(userData.ubicacion || "");
+          setEmail(userData.email || "");
+          setSobreMi(userData.about || "");
+        }
+      });
     }
-  }, []);
+  }, [user]);
 
-  const handleSave = () => {
-    const updatedUser = { nombre, rol, ubicacion, email, sobreMi };
-    localStorage.setItem('user', JSON.stringify(updatedUser));
-    navigate('/perfil'); // Redirige de nuevo al perfil después de guardar
+  const handleSave = async () => {
+    const updatedUser = {
+      id: user.id,
+      name: nombre || user.name,
+      rol: rol || user.rol,
+      ubicacion: ubicacion || user.ubicacion,
+      email: email || user.email,
+      about: sobreMi || user.about,
+    };
+  
+    const result = await updateUser(updatedUser);
+  
+    if (result) {
+      setUser(result[0]); // Actualiza el contexto con los nuevos datos
+      navigate('/perfil'); // Redirige de nuevo al perfil después de guardar
+    } else {
+      console.error("Error al guardar los cambios.");
+    }
   };
+  
 
   return (
     <div>
@@ -35,23 +57,23 @@ const EditarPerfil = () => {
         <form>
           <div style={styles.formGroup}>
             <label style={styles.label}>Nombre</label>
-            <input style={styles.input} type="text" value={nombre} onChange={(e) => setNombre(e.target.value)} />
+            <input placeholder={user.name || "Ingresa tu nombre"} style={styles.input} type="text" value={nombre} onChange={(e) => setNombre(e.target.value)} />
           </div>
           <div style={styles.formGroup}>
             <label style={styles.label}>Rol</label>
-            <input style={styles.input} type="text" value={rol} onChange={(e) => setRol(e.target.value)} />
+            <input placeholder={user.rol || "Ingresa tu rol"} style={styles.input} type="text" value={rol} onChange={(e) => setRol(e.target.value)} />
           </div>
           <div style={styles.formGroup}>
             <label style={styles.label}>Ubicación</label>
-            <input style={styles.input} type="text" value={ubicacion} onChange={(e) => setUbicacion(e.target.value)} />
+            <input placeholder={user.ubicacion|| "Ingresa tu Ubicacion"}  style={styles.input} type="text" value={ubicacion} onChange={(e) => setUbicacion(e.target.value)} />
           </div>
           <div style={styles.formGroup}>
             <label style={styles.label}>Email</label>
-            <input style={styles.input} type="email" value={email} onChange={(e) => setEmail(e.target.value)} />
+            <input placeholder={user.email || "Ingresa tu email"} style={styles.input} type="email" value={email} onChange={(e) => setEmail(e.target.value)} />
           </div>
           <div style={styles.formGroup}>
             <label style={styles.label}>Sobre mí</label>
-            <textarea style={styles.textarea} value={sobreMi} onChange={(e) => setSobreMi(e.target.value)} />
+            <textarea placeholder={user.about || "Sobre mi"}  style={styles.textarea} value={sobreMi} onChange={(e) => setSobreMi(e.target.value)} />
           </div>
           <button type="button" style={styles.button} onClick={handleSave}>Guardar</button>
         </form>

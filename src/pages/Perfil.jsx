@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import Navbar from "../components/Navbar";
 import { useNavigate } from "react-router-dom";
 import Colombia from "../assets/Colombia.png";
@@ -6,21 +6,17 @@ import { useAuth } from "../context/AuthContext";
 
 const Perfil = () => {
   const navigate = useNavigate();
-  const { user, setUser } = useAuth();
-
-  useEffect(() => {
-    const storedUser = JSON.parse(localStorage.getItem("user"));
-    if (storedUser) {
-      setUser(storedUser);
-    }
-  }, []);
+  const { user, logout } = useAuth();
 
   const handleEdit = () => {
     navigate("/editar-perfil");
   };
 
+  if (!user) return <p>Cargando perfil...</p>;
+
   return (
     <div>
+      <Navbar />
       <div style={styles.perfilContainer}>
         <div style={styles.profileBox}>
           <div style={styles.columnContainer}>
@@ -54,6 +50,7 @@ const Perfil = () => {
               </button>
               <button
                 style={styles.logoutButton}
+                onClick={logout}
                 onMouseOver={(e) =>
                   (e.currentTarget.style.backgroundColor =
                     styles.logoutButtonHover.backgroundColor)
@@ -103,12 +100,12 @@ const styles = {
   name: {
     margin: "0",
     fontWeight: "bold",
-    fontSize: "1.5em", // Mayor tamaño que "Administrador"
+    fontSize: "1.5em",
   },
   role: {
     fontWeight: "bold",
     marginBottom: "20px",
-    color: "#666", // Color más opaco
+    color: "#666",
   },
   about: {
     marginBottom: "20px",
@@ -116,18 +113,14 @@ const styles = {
   aboutHeader: {
     fontWeight: "bold",
     marginBottom: "10px",
-    marginLeft: "0", // Mover a la izquierda
-  },
-  aboutText: {
-    textAlign: "left", // Alinear a la izquierda
   },
   profileInfo: {
     marginBottom: "20px",
   },
   iconoColombia: {
-    width: "20px", // Ajusta el tamaño según sea necesario
+    width: "20px",
     height: "auto",
-    marginRight: "5px", // Espacio entre la imagen y el texto
+    marginRight: "5px",
   },
   editButton: {
     display: "block",
@@ -135,7 +128,7 @@ const styles = {
     padding: "10px 15px",
     cursor: "pointer",
     width: "100%",
-    backgroundColor: "#000", // Botón "Editar" en negro
+    backgroundColor: "#000",
     color: "white",
     border: "none",
     textAlign: "center",
@@ -144,14 +137,14 @@ const styles = {
     display: "block",
     padding: "10px 15px",
     cursor: "pointer",
-    backgroundColor: "#fff", // Botón "Cerrar Sesión" en blanco
-    color: "#000", // Texto en negro
+    backgroundColor: "#fff",
+    color: "#000",
     border: "1px solid #000",
     width: "100%",
     textAlign: "center",
   },
   logoutButtonHover: {
-    backgroundColor: "#f0f0f0", // Cambio de color al hacer hover
+    backgroundColor: "#f0f0f0",
   },
 };
 
