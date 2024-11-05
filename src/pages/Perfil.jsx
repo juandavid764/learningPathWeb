@@ -24,7 +24,7 @@ const Perfil = () => {
               <h1 style={styles.name}>{user.name}</h1>
               <p style={styles.role}>{user.rol}</p>
               <div style={styles.about}>
-                <h2 style={styles.aboutHeader}>Sobre mí</h2>
+                <h2 style={{ fontWeight: "bold", textAlign: "left" }}>Sobre mí</h2>
                 <p>{user.about}</p>
               </div>
             </div>
@@ -33,7 +33,7 @@ const Perfil = () => {
                 <p>
                   <strong>Rol:</strong> {user.rol}
                 </p>
-                <p>
+                <p className="flex flex-row">
                   <strong>Ubicación:</strong> {user.ubicacion}
                   <img
                     src={Colombia}
@@ -41,7 +41,7 @@ const Perfil = () => {
                     style={styles.iconoColombia}
                   />
                 </p>
-                <p>
+                <p className="flex flex-row">
                   <strong>Email:</strong> {user.email}
                 </p>
               </div>
@@ -52,12 +52,12 @@ const Perfil = () => {
                 style={styles.logoutButton}
                 onClick={logout}
                 onMouseOver={(e) =>
-                  (e.currentTarget.style.backgroundColor =
-                    styles.logoutButtonHover.backgroundColor)
+                (e.currentTarget.style.backgroundColor =
+                  styles.logoutButtonHover.backgroundColor)
                 }
                 onMouseOut={(e) =>
-                  (e.currentTarget.style.backgroundColor =
-                    styles.logoutButton.backgroundColor)
+                (e.currentTarget.style.backgroundColor =
+                  styles.logoutButton.backgroundColor)
                 }
               >
                 Cerrar Sesión

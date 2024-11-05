@@ -37,9 +37,9 @@ const EditarPerfil = () => {
       email: email || user.email,
       about: sobreMi || user.about,
     };
-  
+
     const result = await updateUser(updatedUser);
-  
+
     if (result) {
       setUser(result[0]); // Actualiza el contexto con los nuevos datos
       navigate('/perfil'); // Redirige de nuevo al perfil después de guardar
@@ -47,7 +47,7 @@ const EditarPerfil = () => {
       console.error("Error al guardar los cambios.");
     }
   };
-  
+
 
   return (
     <div>
@@ -57,23 +57,23 @@ const EditarPerfil = () => {
         <form>
           <div style={styles.formGroup}>
             <label style={styles.label}>Nombre</label>
-            <input placeholder={user.name || "Ingresa tu nombre"} style={styles.input} type="text" value={nombre} onChange={(e) => setNombre(e.target.value)} />
+            <input placeholder={user.name || "Ingresa tu nombre"} style={styles.input} type="text" onChange={(e) => setNombre(e.target.value)} />
           </div>
           <div style={styles.formGroup}>
             <label style={styles.label}>Rol</label>
-            <input placeholder={user.rol || "Ingresa tu rol"} style={styles.input} type="text" value={rol} onChange={(e) => setRol(e.target.value)} />
+            <input placeholder={user.rol || "Ingresa tu rol"} style={styles.input} type="text" value="" onChange={(e) => setRol(e.target.value)} />
           </div>
           <div style={styles.formGroup}>
             <label style={styles.label}>Ubicación</label>
-            <input placeholder={user.ubicacion|| "Ingresa tu Ubicacion"}  style={styles.input} type="text" value={ubicacion} onChange={(e) => setUbicacion(e.target.value)} />
+            <input placeholder={user.ubicacion || "Ingresa tu Ubicacion"} style={styles.input} type="text" onChange={(e) => setUbicacion(e.target.value)} />
           </div>
           <div style={styles.formGroup}>
             <label style={styles.label}>Email</label>
-            <input placeholder={user.email || "Ingresa tu email"} style={styles.input} type="email" value={email} onChange={(e) => setEmail(e.target.value)} />
+            <input placeholder={user.email || "Ingresa tu email"} style={styles.input} type="email" onChange={(e) => setEmail(e.target.value)} />
           </div>
           <div style={styles.formGroup}>
             <label style={styles.label}>Sobre mí</label>
-            <textarea placeholder={user.about || "Sobre mi"}  style={styles.textarea} value={sobreMi} onChange={(e) => setSobreMi(e.target.value)} />
+            <textarea placeholder={user.about || "Sobre mi"} style={styles.textarea} onChange={(e) => setSobreMi(e.target.value)} />
           </div>
           <button type="button" style={styles.button} onClick={handleSave}>Guardar</button>
         </form>

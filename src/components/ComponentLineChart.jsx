@@ -11,17 +11,22 @@ const xLabels = ["Rev 1", "Rev 2", "Rev 3", "Rev 4", "Rev 5", "Rev 6", "Rev 7"];
 
 export default function ComponentLineChart() {
   return (
-    <LineChart
-      width={600}
-      height={400}
-      series={[
-        { data: logicaData, label: "Lógico" },
-        { data: linguisticaData, label: "Lingüística" },
-        { data: espacialData, label: "Espacial" },
-        { data: musicalData, label: "Musical" },
-        { data: interpersonalData, label: "Interpersonal" },
-      ]}
-      xAxis={[{ scaleType: "point", data: xLabels }]}
-    />
+    <div className="flex justify-center">
+      <div className="flex flex-col">
+        {/* <h1 className="text-2xl font-bold mb-4 justify-center">Grafica</h1> */}
+        <LineChart
+          width={600}
+          height={400}
+          series={[
+            { data: logicaData, label: "Lógico" },
+            { data: linguisticaData, label: "Lingüística" },
+            { data: espacialData, label: "Espacial" },
+            { data: musicalData, label: "Musical" },
+            { data: interpersonalData, label: "Interpersonal" },
+          ]}
+          xAxis={[{ scaleType: "point", data: xLabels }]}
+        />
+      </div>
+    </div>
   );
 }

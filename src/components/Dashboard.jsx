@@ -10,7 +10,7 @@ const Dashboard = () => {
   const stats = [
     {
       name: "Alumnos",
-      value: "150",
+      value: "40",
       icon: <UsersIcon className="h-12 w-12 text-white" />,
       bgColor: "bg-blue-400",
     },
@@ -22,7 +22,7 @@ const Dashboard = () => {
     },
     {
       name: "Grados",
-      value: "10",
+      value: "11",
       icon: <ClipboardListIcon className="h-12 w-12 text-white" />,
       bgColor: "bg-red-300",
     },
@@ -30,7 +30,7 @@ const Dashboard = () => {
 
   return (
     <div className="pb-4 pt-7">
-      <h2 className="text-2xl font-bold mb-4">Dashboard</h2>
+      <h2 className="text-2xl font-bold mb-4">Estadisticas</h2>
 
       <div className="grid grid-cols-1 md:grid-cols-3 gap-7">
         {stats.map((stat, index) => (
