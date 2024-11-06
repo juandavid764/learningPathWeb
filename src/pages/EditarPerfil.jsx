@@ -16,7 +16,7 @@ const EditarPerfil = () => {
   useEffect(() => {
     if (user?.id) {
       // Cargar datos del usuario desde la base de datos
-      getUserById(user.id).then(userData => {
+      getUserById(user.id).then((userData) => {
         if (userData) {
           setNombre(userData.name || "");
           setRol(userData.rol || "");
@@ -42,12 +42,11 @@ const EditarPerfil = () => {
 
     if (result) {
       setUser(result[0]); // Actualiza el contexto con los nuevos datos
-      navigate('/perfil'); // Redirige de nuevo al perfil después de guardar
+      navigate("/perfil"); // Redirige de nuevo al perfil después de guardar
     } else {
       console.error("Error al guardar los cambios.");
     }
   };
-
 
   return (
     <div>
@@ -57,25 +56,51 @@ const EditarPerfil = () => {
         <form>
           <div style={styles.formGroup}>
             <label style={styles.label}>Nombre</label>
-            <input placeholder={user.name || "Ingresa tu nombre"} style={styles.input} type="text" onChange={(e) => setNombre(e.target.value)} />
+            <input
+              placeholder={user.name || "Ingresa tu nombre"}
+              style={styles.input}
+              type="text"
+              onChange={(e) => setNombre(e.target.value)}
+            />
           </div>
           <div style={styles.formGroup}>
             <label style={styles.label}>Rol</label>
-            <input placeholder={user.rol || "Ingresa tu rol"} style={styles.input} type="text" value="" onChange={(e) => setRol(e.target.value)} />
+            <input
+              placeholder={user.rol || "Ingresa tu rol"}
+              style={styles.input}
+              type="text"
+              onChange={(e) => setRol(e.target.value)}
+            />
           </div>
           <div style={styles.formGroup}>
             <label style={styles.label}>Ubicación</label>
-            <input placeholder={user.ubicacion || "Ingresa tu Ubicacion"} style={styles.input} type="text" onChange={(e) => setUbicacion(e.target.value)} />
+            <input
+              placeholder={user.ubicacion || "Ingresa tu Ubicacion"}
+              style={styles.input}
+              type="text"
+              onChange={(e) => setUbicacion(e.target.value)}
+            />
           </div>
           <div style={styles.formGroup}>
             <label style={styles.label}>Email</label>
-            <input placeholder={user.email || "Ingresa tu email"} style={styles.input} type="email" onChange={(e) => setEmail(e.target.value)} />
+            <input
+              placeholder={user.email || "Ingresa tu email"}
+              style={styles.input}
+              type="email"
+              onChange={(e) => setEmail(e.target.value)}
+            />
           </div>
           <div style={styles.formGroup}>
             <label style={styles.label}>Sobre mí</label>
-            <textarea placeholder={user.about || "Sobre mi"} style={styles.textarea} onChange={(e) => setSobreMi(e.target.value)} />
+            <textarea
+              placeholder={user.about || "Sobre mi"}
+              style={styles.textarea}
+              onChange={(e) => setSobreMi(e.target.value)}
+            />
           </div>
-          <button type="button" style={styles.button} onClick={handleSave}>Guardar</button>
+          <button type="button" style={styles.button} onClick={handleSave}>
+            Guardar
+          </button>
         </form>
       </div>
     </div>
@@ -84,44 +109,44 @@ const EditarPerfil = () => {
 
 const styles = {
   editarPerfilContainer: {
-    padding: '20px',
-    backgroundColor: '#f9f9f9',
-    boxShadow: '0 4px 8px rgba(0, 0, 0, 0.1)',
-    borderRadius: '8px',
-    width: '80%',
-    maxWidth: '800px',
-    margin: 'auto',
-    marginTop: '20px',
+    padding: "20px",
+    backgroundColor: "#f9f9f9",
+    boxShadow: "0 4px 8px rgba(0, 0, 0, 0.1)",
+    borderRadius: "8px",
+    width: "80%",
+    maxWidth: "800px",
+    margin: "auto",
+    marginTop: "20px",
   },
   formGroup: {
-    marginBottom: '15px',
+    marginBottom: "15px",
   },
   label: {
-    display: 'block',
-    marginBottom: '5px',
-    fontWeight: 'bold',
+    display: "block",
+    marginBottom: "5px",
+    fontWeight: "bold",
   },
   input: {
-    width: '100%',
-    padding: '10px',
-    borderRadius: '4px',
-    border: '1px solid #ccc',
+    width: "100%",
+    padding: "10px",
+    borderRadius: "4px",
+    border: "1px solid #ccc",
   },
   textarea: {
-    width: '100%',
-    padding: '10px',
-    borderRadius: '4px',
-    border: '1px solid #ccc',
-    height: '100px',
+    width: "100%",
+    padding: "10px",
+    borderRadius: "4px",
+    border: "1px solid #ccc",
+    height: "100px",
   },
   button: {
-    padding: '10px 15px',
-    cursor: 'pointer',
-    backgroundColor: '#007bff',
-    color: 'white',
-    border: 'none',
-    borderRadius: '4px',
-    marginTop: '10px',
+    padding: "10px 15px",
+    cursor: "pointer",
+    backgroundColor: "#007bff",
+    color: "white",
+    border: "none",
+    borderRadius: "4px",
+    marginTop: "10px",
   },
 };
 

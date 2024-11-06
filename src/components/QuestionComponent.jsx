@@ -21,6 +21,7 @@ const QuestionComponent = ({ questionText, onAnswerChange }) => {
               value={option.value}
               onChange={(e) => onAnswerChange(parseInt(e.target.value))}
               className="form-radio text-blue-500"
+              required
             />
             <span>{option.label}</span>
           </label>
