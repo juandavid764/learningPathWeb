@@ -29,7 +29,7 @@ const IntelligencesForm = () => {
 
   const handleSnackbarClose = () => {
     setOpenSnackbar(false);
-    navigate("/evaluaciones"); // Redirigir cuando se cierre el snackbar
+    navigate(`/evaluaciones/resultados/${scores.id}`); // Redirigir cuando se cierre el snackbar
   };
 
   // Manejar el cambio del ID del estudiante
